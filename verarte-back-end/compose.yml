@@ -1,0 +1,11 @@
+services:
+  api:
+    build: . # Constrói usando o Dockerfile da pasta atual
+    image: verarte-backend # Nome da imagem
+    container_name: verarte-app
+    network_mode: "host" # O truque do Linux para acessar o banco local
+    env_file:
+      - .env # Lê as variáveis do seu arquivo .env
+    volumes:
+      - .:/app # (Opcional) Espelha seu código para dentro (bom para dev)
+    restart: always
