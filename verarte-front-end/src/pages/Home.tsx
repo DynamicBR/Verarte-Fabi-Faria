@@ -15,7 +15,7 @@ export function Home() {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/products")
+    fetch(`${import.meta.env.VITE_API_URL}/products`)
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -43,7 +43,7 @@ export function Home() {
           <div className="md:w-1/2 h-96 md:h-auto bg-gray-200 relative">
             {/* COLOQUE A FOTO DA FABI AQUI */}
             <img
-              src="https://images.unsplash.com/photo-1459749411177-046f521c8ae3?q=80&w=2070&auto=format&fit=crop"
+              src="../src/assets/foto-perfil.jpeg"
               alt="Fabiana Faria no Ateliê"
               className="w-full h-full object-cover"
             />
@@ -73,7 +73,7 @@ export function Home() {
             </p>
 
             <a
-              href="https://instagram.com/verarte"
+              href="https://www.instagram.com/fabi.silva.faria/"
               target="_blank"
               className="inline-flex items-center gap-2 text-rosa-antigo font-bold hover:text-cafe transition-colors self-start border-b-2 border-transparent hover:border-rosa-antigo pb-1"
             >

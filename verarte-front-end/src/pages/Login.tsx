@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Mail, Lock, KeyRound, ArrowRight, Loader2 } from "lucide-react";
@@ -24,7 +24,7 @@ export function Login() {
     setError("");
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/auth/login", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -56,7 +56,7 @@ export function Login() {
     setError("");
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/auth/verify", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/verify`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, code }),
@@ -148,7 +148,7 @@ export function Login() {
               <div className="flex justify-end">
                 <Link
                   to="/forgot-password"
-                  className="text-xs text-rosa-antigo hover:text-cafe font-semibold"
+                  className="text-xs text-cafe hover:text-verde-musgo font-semibold"
                 >
                   Esqueci minha senha
                 </Link>
@@ -157,7 +157,7 @@ export function Login() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-cafe text-creme py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all flex items-center justify-center gap-2"
+                className="w-full bg-cafe text-verde-musgo py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <Loader2 className="animate-spin" />

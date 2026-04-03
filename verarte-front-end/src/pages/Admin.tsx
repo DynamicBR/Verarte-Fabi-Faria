@@ -22,7 +22,7 @@ export function Admin() {
   }, []);
 
   const fetchProducts = async () => {
-    const response = await fetch("http://127.0.0.1:8000/products");
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/products`);
     const data = await response.json();
     setProducts(data);
   };
@@ -30,7 +30,7 @@ export function Admin() {
   const handleDelete = async (id: number) => {
     if (confirm("Tem certeza que deseja apagar este produto?")) {
       try {
-        await fetch(`http://127.0.0.1:8000/products/${id}`, {
+        await fetch(`${import.meta.env.VITE_API_URL}/products/${id}`, {
           method: "DELETE",
         });
         fetchProducts(); // Recarrega a lista
@@ -49,7 +49,7 @@ export function Admin() {
       if (image) {
         const formData = new FormData();
         formData.append("file", image);
-        const uploadResponse = await fetch("http://127.0.0.1:8000/upload", {
+        const uploadResponse = await fetch(`${import.meta.env.VITE_API_URL}/upload`, {
           method: "POST",
           body: formData,
         });
@@ -64,7 +64,7 @@ export function Admin() {
         image_url: imageUrl,
       };
 
-      await fetch("http://127.0.0.1:8000/products", {
+      await fetch(`${import.meta.env.VITE_API_URL}/products`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(productData),

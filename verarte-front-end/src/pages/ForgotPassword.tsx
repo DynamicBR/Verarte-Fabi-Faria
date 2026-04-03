@@ -28,7 +28,7 @@ export function ForgotPassword() {
     setError("");
 
     try {
-      await fetch("http://127.0.0.1:8000/auth/forgot-password", {
+      await fetch(`${import.meta.env.VITE_API_URL}/auth/forgot-password`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -53,7 +53,7 @@ export function ForgotPassword() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/auth/reset-password",
+        `${import.meta.env.VITE_API_URL}/auth/reset-password`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -90,7 +90,7 @@ export function ForgotPassword() {
             <h2 className="text-2xl text-cafe font-serif font-bold">
               Recuperar Senha
             </h2>
-            <p className="text-gray-500 text-sm mt-1">
+            <p className="text-cafe-500 text-sm mt-1">
               {step === 1
                 ? "Digite seu e-mail para receber um código."
                 : `Código enviado para ${email}`}
@@ -115,13 +115,13 @@ export function ForgotPassword() {
                   placeholder="Seu e-mail cadastrado"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 p-3 border rounded-lg focus:border-rosa-antigo outline-none"
+                  className="w-full pl-10 p-3 border rounded-lg focus:border-verde-musgo outline-none"
                   required
                 />
               </div>
               <button
                 disabled={loading}
-                className="w-full bg-cafe text-creme py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all flex justify-center items-center gap-2"
+                className="w-full bg-cafe text-rosa-antigo py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all flex justify-center items-center gap-2"
               >
                 {loading ? (
                   <Loader2 className="animate-spin" />
@@ -184,7 +184,7 @@ export function ForgotPassword() {
           <div className="mt-6 text-center">
             <Link
               to="/login"
-              className="text-sm text-gray-500 hover:text-cafe underline"
+              className="text-sm text-cafe-500 hover:bg-rosa-antigo rounded-full underline"
             >
               Voltar para o Login
             </Link>

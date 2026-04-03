@@ -27,7 +27,7 @@ export function Register() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/buyers/register", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/buyers/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -65,7 +65,7 @@ export function Register() {
       <main className="flex-grow flex items-center justify-center p-8">
         <div className="bg-white p-8 rounded-xl shadow-lg border border-rosa-antigo w-full max-w-2xl">
           <h2 className="text-3xl text-cafe font-serif mb-6 text-center">
-            Junte-se ao nosso clube
+            Junte-se ao nosso ateliê
           </h2>
 
           <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
@@ -75,7 +75,7 @@ export function Register() {
                 placeholder="Nome Completo"
                 onChange={handleChange}
                 required
-                className="w-full p-3 border rounded-lg focus:border-rosa-antigo outline-none"
+                className="w-full p-3 border rounded-lg focus:border-verde-musgo  outline-none"
               />
               <input
                 name="email"
@@ -83,7 +83,7 @@ export function Register() {
                 placeholder="E-mail"
                 onChange={handleChange}
                 required
-                className="w-full p-3 border rounded-lg focus:border-rosa-antigo outline-none"
+                className="w-full p-3 border rounded-lg focus:border-verde-musgo outline-none"
               />
               <input
                 name="password"
@@ -91,13 +91,13 @@ export function Register() {
                 placeholder="Senha"
                 onChange={handleChange}
                 required
-                className="w-full p-3 border rounded-lg focus:border-rosa-antigo outline-none"
+                className="w-full p-3 border rounded-lg focus:border-verde-musgo outline-none"
               />
               <input
                 name="phone"
                 placeholder="Telefone / WhatsApp"
                 onChange={handleChange}
-                className="w-full p-3 border rounded-lg focus:border-rosa-antigo outline-none"
+                className="w-full p-3 border rounded-lg focus:border-verde-musgo outline-none"
               />
             </div>
 
@@ -106,7 +106,7 @@ export function Register() {
                 name="address"
                 placeholder="Endereço de Entrega (Rua, Número, Bairro, CEP)"
                 onChange={handleChange}
-                className="w-full p-3 border rounded-lg focus:border-rosa-antigo outline-none h-full resize-none"
+                className="w-full p-3 border rounded-lg focus:border-verde-musgo outline-none h-full resize-none"
               />
             </div>
 
@@ -114,18 +114,18 @@ export function Register() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-cafe text-creme py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all flex justify-center"
+                className="w-full bg-cafe text-verde-musgo py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all flex justify-center"
               >
                 {loading ? <Loader2 className="animate-spin" /> : "Criar Conta"}
               </button>
             </div>
           </form>
 
-          <p className="text-center mt-4 text-sm text-gray-500">
+          <p className="text-center mt-4 text-sm text-creme-500">
             Já tem conta?{" "}
             <Link
               to="/login"
-              className="text-rosa-antigo font-bold hover:underline"
+              className="text-cafe font-bold hover:underline"
             >
               Faça Login
             </Link>

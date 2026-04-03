@@ -1,10 +1,11 @@
 import resend
-import os
-from dotenv import load_dotenv
+from app.config import settings
 
-load_dotenv()
+resend.api_key = settings.RESEND_API_KEY
 
-resend.api_key = os.getenv("RESEND_API_KEY")
+# Configuração centralizada do remetente
+# Quando configurar seu domínio no Resend, altere "onboarding@resend.dev" para seu e-mail (ex: "nao-responda@verarte.com.br")
+SENDER_EMAIL = "fabi-faria-verarte.com.br"
 
 
 async def send_welcome_email(to_email: str, name: str):
@@ -16,7 +17,7 @@ async def send_welcome_email(to_email: str, name: str):
         # O Resend envia emails assíncronos
         r = resend.Emails.send(
             {
-                "from": "Verarte <onboarding@resend.dev>",  # Use o domínio do Resend para testes
+                "from": f"Verarte <{SENDER_EMAIL}>",
                 "to": to_email,
                 "subject": "Bem-vindo à Verarte!",
                 "html": f"""
@@ -39,7 +40,7 @@ async def send_verification_code(to_email: str, code: str):
     try:
         r = resend.Emails.send(
             {
-                "from": "Verarte Security <auth@resend.dev>",  # Use o domínio de teste ou o seu
+                "from": f"Verarte Security <{SENDER_EMAIL}>",
                 "to": to_email,
                 "subject": "Seu código de acesso Verarte",
                 "html": f"""
